@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "lc-webapp"
+    }
+  },
+  "defaultProject": "lc-webapp",
+  "cli": {
+    "analytics": "14bae12e-e73a-4fcf-903f-edd098018d13"
+  }
 }
