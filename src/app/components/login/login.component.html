@@ -14,8 +14,10 @@
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
     </mat-form-field>
-    <div class="button-login">
-      <button mat-raised-button (click)="doLogin()">Iniciar sesión</button>
+    <div class="button-class">
+      <button class="button-login" mat-raised-button (click)="doLogin()">Iniciar sesión</button>
+      <button class="button-register" mat-raised-button (click)="doNewRegister()" color="primary">Registrar-se</button>
     </div>
+    <a class="link-class" href="">¿Olvidaste su contraseña?</a>
   </div>
 </body>

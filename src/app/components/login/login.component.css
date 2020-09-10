@@ -8,8 +8,8 @@ body {
 }
 
 .login-box {
-  width: 320px;
-  height: 420px;
+  width: 380px;
+  height: 500px;
   background: #3b4652;
   color: #fff;
   top: 50%;
@@ -42,6 +42,19 @@ body {
 }
 
 .button-login {
+  float: right;
+}
+
+.button-register {
+  float: left;
+}
+
+.button-class {
+  margin-top: 1%;
+}
+
+.link-class {
+  float: none;
   text-align: center;
-  margin-top: 15px;
+  color: white;
 }
