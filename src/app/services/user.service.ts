@@ -37,7 +37,7 @@ export class UserService {
             new User (
             data.object.id,
             data.object.email,
-            data.object.isDeleted,
+            data.object.deleted,
             data.object.password,
             data.object.username
           )
@@ -51,7 +51,7 @@ export class UserService {
         new User (
             data.object.id,
             data.object.email,
-            data.object.isDeleted,
+            data.object.deleted,
             data.object.password,
             data.object.username
         )
