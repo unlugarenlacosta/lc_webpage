@@ -3,10 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 // IMPORTAMOS ATRIBUTOS DEL FORMS PARA PODER RELLENAR I UTILIZAR FORMULARIOS EN NUESTRA WEB, COMO EJEMPLO FORMCONTROL QUE ES PARA CONTROLAR VALIDACIONES DE EMAIL ETC, COMO EL VALIDATORS
 import { FormControl, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 // IMPORTAMOS EL USERSERVICE PARA PODER USAR SUS METODOS Y ASI PODER HACER UNA PETICION HTTP
 import { UserService } from '../../services/user.service';
-import { HttpClient } from '@angular/common/http';
+// IMPORTAMOS EL SERVICE CREADO DE SNACKBAR PARA PODER UTILIZARLO
 import { SnackBarService } from '../../utils/snack-bar.service';
 
 @Component({
@@ -27,7 +26,6 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private route: Router,
-    private http: HttpClient,
     private userService: UserService,
     private snackBarService: SnackBarService
   ) { }
@@ -50,13 +48,19 @@ export class RegisterComponent implements OnInit {
    * METODO PARA REGISTRAR HA UN USUARIO EN LA BASE DE DATOS
   **/
   doRegister() {
-    if(this.password == this.passwordConfirm) {
-      this.userService.doRegister(this.email.value, this.username, this.password).subscribe((data) => {
-        this.snackBarService.basicSnackBar('Usuario creado correctamente', 'Cerrar');
-        this.route.navigate(['login'])
-      })
+    // letters condiciona a que el username tenga letras o numeros.
+    let letters = /^[0-9a-zA-Z]+$/;
+    if(!this.email.hasError('email') && this.password != undefined && this.passwordConfirm != undefined && this.username != undefined && this.password.length < 8 && this.passwordConfirm.length < 8 && this.username.match(letters)) {
+      if(this.password == this.passwordConfirm) {
+        this.userService.doRegister(this.email.value, this.username, this.password).subscribe((data) => {
+          this.snackBarService.basicSnackBar('Usuario creado correctamente', 'Cerrar');
+          this.route.navigate(['login'])
+        })
+      }else {
+        this.snackBarService.basicSnackBar('Las contraseñas no cuenciden', 'Cerrar');
+      }
     }else {
-      this.snackBarService.basicSnackBar('Las contraseñas no cuenciden', 'Cerrar');
+      this.snackBarService.basicSnackBar('Falta algún campo por rellenar o algún campo no es correcto', 'Cerrar');
     }
   }
 

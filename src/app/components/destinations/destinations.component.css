@@ -1,0 +1,10 @@
+.button-account {
+    text-align: right;
+}
+.button-account mat-icon {
+    padding-right: 3px;
+}
+.mat-toolbar span {
+    width: 100%;
+    text-align: center;
+}

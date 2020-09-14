@@ -53,8 +53,8 @@ body {
   margin-top: 1%;
 }
 
-.link-class {
-  float: none;
-  text-align: center;
+.link-class, .link-class a {
   color: white;
+  text-align: center;
+  margin-top: 20%;
 }

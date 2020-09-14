@@ -6,6 +6,8 @@ import { FormControl, Validators } from '@angular/forms';
 // IMPORTAMOS EL USERSERVICE PARA PODER USAR SUS METODOS Y ASI PODER HACER UNA PETICION HTTP
 import { UserService } from '../../services/user.service';
 
+import { SnackBarService } from '../../utils/snack-bar.service'
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,7 +24,8 @@ export class LoginComponent implements OnInit {
   constructor(
     // ES NECESARIO DECLARAR MUCHAS DE LAS IMPORTACIONES DE ARRIBA PARA ASI PODER USARLAS.
     private route: Router,
-    private userService: UserService
+    private userService: UserService,
+    private snackBar: SnackBarService
   ) { }
 
   ngOnInit(): void {
@@ -43,10 +46,15 @@ export class LoginComponent implements OnInit {
    * METODO PARA INICIAR SESION QUE ES LLAMADA POR EL BOTON DE INICIAR SESION DEL HTML (CLICK) 
   **/
   doLogin() {
-    console.log(this.email.value + " " + this.password)
-    this.userService.doLogin(this.email.value, this.password).subscribe(data => {
-      console.log(data)
-    })
+    console.log(this.password);
+    if(!this.getErrorMessage() && this.password != undefined){
+      this.userService.doLogin(this.email.value, this.password).subscribe(data => {
+        console.log(data);
+        this.route.navigate(['destinations']);
+      })
+    }else {
+      this.snackBar.basicSnackBar('Algun elemento del formulario no es correcto', 'Cerrar');
+    }
   }
 
   doNewRegister() {

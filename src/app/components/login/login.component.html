@@ -1,5 +1,5 @@
 <body>
-<div class="login-box">
+  <div class="login-box">
     <img src="../../../assets/avatarLogin.png" class="avatar" alt="Avatar Image">
     <h1>Inicio de sesión</h1>
     <mat-form-field appearance="fill">
@@ -18,6 +18,12 @@
       <button class="button-login" mat-raised-button (click)="doLogin()">Iniciar sesión</button>
       <button class="button-register" mat-raised-button (click)="doNewRegister()" color="primary">Registrar-se</button>
     </div>
-    <a class="link-class" href="">¿Olvidaste su contraseña?</a>
+    <div class="link-class">
+      <a routerLink="/recovery">
+        ¿Olvidaste su contraseña?<br>
+        ¿Recuperar su cuenta?<br>
+        ¿Solicitar su email de verificación?
+      </a>
+    </div>
   </div>
 </body>

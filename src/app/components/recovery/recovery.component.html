@@ -1,0 +1,16 @@
+<body>
+    <div class="login-box">
+        <img src="../../../assets/avatarRecovery.png" class="avatar" alt="Avatar Image">
+        <h1>Formulario de recuperación</h1>
+        <mat-form-field appearance="fill">
+            <mat-label>Introduce tu correo electrónico</mat-label>
+            <input matInput placeholder="ejemplo@ejemplo.com" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <div class="button-class">
+            <button class="button-email-verification" mat-raised-button (click)="doSendEmailVerification()" color="white">Enviar correo de verificación</button>
+            <button class="button-recovery-password" mat-raised-button (click)="doRecoveryPassword()" color="white">Recuperar su contraseña</button>
+            <button class="button-recovery-account" mat-raised-button (click)="doRecoveryAccount()" color="warn">Recuperar su cuenta</button>
+        </div>
+    </div>
+</body>
