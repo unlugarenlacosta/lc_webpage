@@ -14,6 +14,6 @@ export class AppComponent {
   ){}
 
   ngOnInit(){
-    this.route.navigate(['destinations']);
+    this.route.navigate(['login']);
   }
 }

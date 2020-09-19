@@ -1,7 +1,7 @@
 // IMPORTS DE ANGULAR
 import { Injectable } from '@angular/core';
 // IMPORT HTTPCLIENT PARA PODER HACER LAS PETICIONES
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 // IMPORT ENVIRONMENT PARA PODER USAR EL ENDPOINT
 import { environment } from '../../environments/environment';
 // IMPORTAMOS OBSERVABLE PARA DECIRLE A LOS METODOS EL TIPO DE RESPUESTA QUE TIENE QUE DEVOLVER
@@ -39,8 +39,9 @@ export class UserService {
             data.object.email,
             data.object.deleted,
             data.object.password,
-            data.object.username
-          )
+            data.object.username,
+            data.object.token
+          ) 
         )
       );
   }
@@ -53,9 +54,22 @@ export class UserService {
             data.object.email,
             data.object.deleted,
             data.object.password,
-            data.object.username
+            data.object.username,
+            data.object.token
         )
     ));
+  }
+
+  private getHeaders(login, multipart?) {
+    if (login) {
+      if (multipart) {
+        return new HttpHeaders().set('Authorization', window.localStorage.getItem("token"));
+      } else {
+        return new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', window.localStorage.getItem("token"));
+      }
+    } else {
+      return new HttpHeaders().set('Content-Type', 'application/json');
+    }
   }
 
   /**

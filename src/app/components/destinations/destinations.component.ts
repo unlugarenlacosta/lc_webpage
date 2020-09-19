@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DestinationsService } from "../../services/destinations.service";
 
 @Component({
   selector: 'app-destinations',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DestinationsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private destinationService: DestinationsService) { }
 
   ngOnInit(): void {
+    this.findEmail();
+  }
+
+  findEmail() {
+    this.destinationService.findUser().subscribe(data => {
+      console.log(data);
+    })
   }
 
 }

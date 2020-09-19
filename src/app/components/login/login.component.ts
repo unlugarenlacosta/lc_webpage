@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
     if(!this.getErrorMessage() && this.password != undefined){
       this.userService.doLogin(this.email.value, this.password).subscribe(data => {
         console.log(data);
+        window.localStorage.setItem("token", data.token);
         this.route.navigate(['destinations']);
       })
     }else {
