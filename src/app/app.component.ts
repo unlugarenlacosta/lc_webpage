@@ -7,13 +7,13 @@ import { Router } from '@angular/router'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Unlugarenlacosta';
+  title = 'dimetulugar';
 
   constructor(
     private route: Router
   ){}
 
   ngOnInit(){
-    this.route.navigate(['destinations']);
+    this.route.navigate(['login']);
   }
 }
